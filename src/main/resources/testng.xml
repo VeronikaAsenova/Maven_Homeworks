@@ -1,7 +1,17 @@
-<suite name="Test-method Suite" parallel="methods" thread-count="5" >
+<suite name="Test-method Suite" parallel="methods" thread-count="1" >
     <test name="Test-method test" group-by-instances="true">
+<!--        <parameter name="username" value="roni"/>-->
+        <parameter name="password" value="roni95"/>
         <classes>
-            <class name="com.mentormate.Homework1_MathCalculations" />
+            <class name="api.tests.RestAssuredDemoTest" />
         </classes>
     </test>
 </suite>
+
+<!--<suite name="Test-method Suite" parallel="methods" thread-count="5" >-->
+<!--<test name="Test-method test" group-by-instances="true">-->
+<!--    <classes>-->
+<!--        <class name="com.mentormate.Homework1_MathCalculations" />-->
+<!--    </classes>-->
+<!--</test>-->
+<!--</suite>-->
