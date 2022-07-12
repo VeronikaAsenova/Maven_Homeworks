@@ -12,11 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import java.time.Duration;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class SeleniumTestHomework {
 
@@ -37,10 +33,10 @@ public class SeleniumTestHomework {
         driver.manage().window().maximize();
 
         //implicitWait for element (waiting for the element to appear)
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
         //Wait for the pages (waiting for page loading)
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
 
         //Explicit wait
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -241,53 +237,53 @@ public class SeleniumTestHomework {
         Assert.assertTrue(url.contains("https://www.dominos.bg/"));
     }
 
-    @Test
-    public void userRegister(){
-
-        driver.get("https://www.dominos.bg/?gclid=EAIaIQobChMI6MXpnu3y-AIVRfDjBx0wmQz6EAAYASAAEgIfJfD_BwE");
-
-        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
-        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
-        rejectOffer.click();
-
-        WebElement orderNow = driver.findElement(By.xpath("//a[text()='ПОРЪЧАЙ СЕГА']"));
-        orderNow.click();
-
-        WebElement popup = driver.findElement(By.xpath("//div[@class='popup-content clearfix']"));
-        wait.until(ExpectedConditions.visibilityOf(popup));
-
-        WebElement registerBtn = driver.findElement(By.xpath("//div[@class='button blue-btn margin-top-25 margin-bottom-15 text-center col-xs-6 col-xs-offset-3 register']"));
-        registerBtn.click();
-
-        WebElement regPage = driver.findElement(By.xpath("//div[@class='box white-bg border-radius padding-20 clearfix']"));
-        Assert.assertTrue(regPage.isDisplayed());
-
-        WebElement firstName = driver.findElement(By.xpath("//input[@id='f_name']"));
-        WebElement lastName = driver.findElement(By.xpath("//input[@id='l_name']"));
-        WebElement email = driver.findElement(By.xpath("//input[@id='email']"));
-        WebElement password = driver.findElement(By.xpath("//input[@id='pass']"));
-        WebElement confPassword = driver.findElement(By.xpath("//input[@id='conf_pass']"));
-
-        //have a question here -> can't select the exact xpath of the checkbox
-//        WebElement privacyPolicy = driver.findElement(By.xpath("(//div[@class='consent'])[2]"));
-        WebElement privacyPolicy = driver.findElement(By.xpath("//label[@for='order_and_delivery']"));
-
-        firstName.clear();
-        firstName.sendKeys("Test1");
-
-        lastName.clear();
-        lastName.sendKeys("Case2");
-
-        email.clear();
-        email.sendKeys("kokoka5614@satedly.com");
-
-        password.clear();
-        password.sendKeys("TestCase4321*");
-
-        confPassword.clear();
-        confPassword.sendKeys("TestCase4321*");
-
-        privacyPolicy.click();
-
-    }
+//    @Test
+//    public void userRegister(){
+//
+//        driver.get("https://www.dominos.bg/?gclid=EAIaIQobChMI6MXpnu3y-AIVRfDjBx0wmQz6EAAYASAAEgIfJfD_BwE");
+//
+//        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+//        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+//        rejectOffer.click();
+//
+//        WebElement orderNow = driver.findElement(By.xpath("//a[text()='ПОРЪЧАЙ СЕГА']"));
+//        orderNow.click();
+//
+//        WebElement popup = driver.findElement(By.xpath("//div[@class='popup-content clearfix']"));
+//        wait.until(ExpectedConditions.visibilityOf(popup));
+//
+//        WebElement registerBtn = driver.findElement(By.xpath("//div[@class='button blue-btn margin-top-25 margin-bottom-15 text-center col-xs-6 col-xs-offset-3 register']"));
+//        registerBtn.click();
+//
+//        WebElement regPage = driver.findElement(By.xpath("//div[@class='box white-bg border-radius padding-20 clearfix']"));
+//        Assert.assertTrue(regPage.isDisplayed());
+//
+//        WebElement firstName = driver.findElement(By.xpath("//input[@id='f_name']"));
+//        WebElement lastName = driver.findElement(By.xpath("//input[@id='l_name']"));
+//        WebElement email = driver.findElement(By.xpath("//input[@id='email']"));
+//        WebElement password = driver.findElement(By.xpath("//input[@id='pass']"));
+//        WebElement confPassword = driver.findElement(By.xpath("//input[@id='conf_pass']"));
+//
+//        //have a question here -> can't select the exact xpath of the checkbox
+////        WebElement privacyPolicy = driver.findElement(By.xpath("(//div[@class='consent'])[2]"));
+//        WebElement privacyPolicy = driver.findElement(By.xpath("//label[@for='order_and_delivery']"));
+////
+//        firstName.clear();
+//        firstName.sendKeys("Test1");
+//
+//        lastName.clear();
+//        lastName.sendKeys("Case2");
+//
+//        email.clear();
+//        email.sendKeys("kokoka5614@satedly.com");
+//
+//        password.clear();
+//        password.sendKeys("TestCase4321*");
+//
+//        confPassword.clear();
+//        confPassword.sendKeys("TestCase4321*");
+//
+//        privacyPolicy.click();
+//
+//    }
 }
