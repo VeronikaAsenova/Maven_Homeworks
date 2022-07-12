@@ -53,10 +53,7 @@ public class SeleniumTestHomework {
     @AfterMethod
     public void tearDown() {
 
-        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
-        //wait.until(ExpectedConditions.visibilityOf(rejectOffer));
-        rejectOffer.click();
-        //   driver.close();
+        driver.close();
     }
 
     @Test
@@ -65,6 +62,10 @@ public class SeleniumTestHomework {
         String restaurantChoice = "София - Студентски Град";
 
         driver.get("https://www.dominos.bg/?gclid=EAIaIQobChMIvZbAk6bp-AIVQ-d3Ch3HRgUIEAAYASAAEgIk9fD_BwE");
+
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
 
         WebElement menuBtn = driver.findElement(By.xpath("//a[@class='font-bold open-modal']"));
         menuBtn.click();
@@ -89,6 +90,10 @@ public class SeleniumTestHomework {
 
         driver.get("https://www.dominos.bg/menu/sofia-student-city");
 
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
+
         WebElement pizzaMenu = driver.findElement(By.xpath("//a[@data-perma='pizzas']"));
 
         wait.until(ExpectedConditions.visibilityOf(pizzaMenu));
@@ -105,6 +110,10 @@ public class SeleniumTestHomework {
 
         driver.get("https://www.dominos.bg/menu/sofia-student-city#pizzas");
 
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
+
         WebElement masterBurgerPizza = driver.findElement(By.xpath("//div[@data-perma='master_burger_pizza']"));
         masterBurgerPizza.click();
 
@@ -118,6 +127,10 @@ public class SeleniumTestHomework {
     public void orderPizza() {
 
         driver.get("https://www.dominos.bg/menu/sofia-student-city#pizzas");
+
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
 
         WebElement masterBurgerPizza = driver.findElement(By.xpath("//div[@data-perma='master_burger_pizza']"));
         masterBurgerPizza.click();
@@ -146,38 +159,25 @@ public class SeleniumTestHomework {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(loginPopUp)));
         Assert.assertTrue(driver.findElement(loginPopUp).isDisplayed());
 
-        String userEmail = "mivega7241@lodores.com";
-        String password = "TestCase1234*";
-
-
-        //this part will be removed and executed from the userLogin method (see the bellow comments )
-        WebElement placeHolderEmail = driver.findElement(By.xpath("//input[@id='login-email']"));
-        placeHolderEmail.click();
-        placeHolderEmail.click();
-        placeHolderEmail.sendKeys(userEmail);
-
-        WebElement placeHolderPassword = driver.findElement(By.xpath("//input[@name='password']"));
-        placeHolderPassword.click();
-        placeHolderPassword.clear();
-        placeHolderPassword.sendKeys(password);
-
-        WebElement loginBtn = driver.findElement(By.xpath("//div[text()='Вход']"));
-        loginBtn.click();
-
-        //Check if "Изберете начин на поръчка" is displayed
-        By orderChoicePopUp = By.xpath("//div[@class='popup-content clearfix']");
-        Assert.assertTrue(driver.findElement(orderChoicePopUp).isDisplayed());
-
     }
 
     @Test
-    public void userLogin(){
-
-        //***When we learn "How To Execute Selenium Scripts On Already Opened Browser from the same tab" this method will be used
-        //***For example with @Test( dependsOnMethods = "orderPizza" )
+    public void userLogin() {
 
         String userEmail = "mivega7241@lodores.com";
         String password = "TestCase1234*";
+
+        driver.get("https://www.dominos.bg/?gclid=EAIaIQobChMI6MXpnu3y-AIVRfDjBx0wmQz6EAAYASAAEgIfJfD_BwE");
+
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
+
+        WebElement orderNow = driver.findElement(By.xpath("//a[text()='ПОРЪЧАЙ СЕГА']"));
+        orderNow.click();
+
+        WebElement popup = driver.findElement(By.xpath("//div[@class='popup-content clearfix']"));
+        wait.until(ExpectedConditions.visibilityOf(popup));
 
         WebElement placeHolderEmail = driver.findElement(By.xpath("//input[@id='login-email']"));
         placeHolderEmail.click();
@@ -195,5 +195,99 @@ public class SeleniumTestHomework {
         //Check if "Изберете начин на поръчка" is displayed
         By orderChoicePopUp = By.xpath("//div[@class='popup-content clearfix']");
         Assert.assertTrue(driver.findElement(orderChoicePopUp).isDisplayed());
+    }
+
+    @Test
+    public void userLogout(){
+
+        String userEmail = "mivega7241@lodores.com";
+        String password = "TestCase1234*";
+
+        driver.get("https://www.dominos.bg/?gclid=EAIaIQobChMI6MXpnu3y-AIVRfDjBx0wmQz6EAAYASAAEgIfJfD_BwE");
+
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
+
+        WebElement orderNow = driver.findElement(By.xpath("//a[text()='ПОРЪЧАЙ СЕГА']"));
+        orderNow.click();
+
+        WebElement popup = driver.findElement(By.xpath("//div[@class='popup-content clearfix']"));
+        wait.until(ExpectedConditions.visibilityOf(popup));
+
+        WebElement placeHolderEmail = driver.findElement(By.xpath("//input[@id='login-email']"));
+        placeHolderEmail.click();
+        placeHolderEmail.click();
+        placeHolderEmail.sendKeys(userEmail);
+
+        WebElement placeHolderPassword = driver.findElement(By.xpath("//input[@name='password']"));
+        placeHolderPassword.click();
+        placeHolderPassword.clear();
+        placeHolderPassword.sendKeys(password);
+
+        WebElement loginBtn = driver.findElement(By.xpath("//div[text()='Вход']"));
+        loginBtn.click();
+
+        WebElement closeIcon = driver.findElement(By.xpath("//img[@class='modal-close img-circle blue-btn cursor-pointer']"));
+        closeIcon.click();
+
+        WebElement profileIcon = driver.findElement(By.xpath("//div[@id='account-icon']"));
+        profileIcon.click();
+
+        WebElement logoutBtn = driver.findElement(By.xpath("//a[text()='ИЗХОД']"));
+        logoutBtn.click();
+
+        String url = driver.getCurrentUrl();
+        Assert.assertTrue(url.contains("https://www.dominos.bg/"));
+    }
+
+    @Test
+    public void userRegister(){
+
+        driver.get("https://www.dominos.bg/?gclid=EAIaIQobChMI6MXpnu3y-AIVRfDjBx0wmQz6EAAYASAAEgIfJfD_BwE");
+
+        WebElement rejectOffer = driver.findElement(By.xpath("//button[@class='align-right secondary slidedown-button']"));
+        wait.until(ExpectedConditions.visibilityOf(rejectOffer));
+        rejectOffer.click();
+
+        WebElement orderNow = driver.findElement(By.xpath("//a[text()='ПОРЪЧАЙ СЕГА']"));
+        orderNow.click();
+
+        WebElement popup = driver.findElement(By.xpath("//div[@class='popup-content clearfix']"));
+        wait.until(ExpectedConditions.visibilityOf(popup));
+
+        WebElement registerBtn = driver.findElement(By.xpath("//div[@class='button blue-btn margin-top-25 margin-bottom-15 text-center col-xs-6 col-xs-offset-3 register']"));
+        registerBtn.click();
+
+        WebElement regPage = driver.findElement(By.xpath("//div[@class='box white-bg border-radius padding-20 clearfix']"));
+        Assert.assertTrue(regPage.isDisplayed());
+
+        WebElement firstName = driver.findElement(By.xpath("//input[@id='f_name']"));
+        WebElement lastName = driver.findElement(By.xpath("//input[@id='l_name']"));
+        WebElement email = driver.findElement(By.xpath("//input[@id='email']"));
+        WebElement password = driver.findElement(By.xpath("//input[@id='pass']"));
+        WebElement confPassword = driver.findElement(By.xpath("//input[@id='conf_pass']"));
+
+        //have a question here -> can't select the exact xpath of the checkbox
+//        WebElement privacyPolicy = driver.findElement(By.xpath("(//div[@class='consent'])[2]"));
+        WebElement privacyPolicy = driver.findElement(By.xpath("//label[@for='order_and_delivery']"));
+
+        firstName.clear();
+        firstName.sendKeys("Test1");
+
+        lastName.clear();
+        lastName.sendKeys("Case2");
+
+        email.clear();
+        email.sendKeys("kokoka5614@satedly.com");
+
+        password.clear();
+        password.sendKeys("TestCase4321*");
+
+        confPassword.clear();
+        confPassword.sendKeys("TestCase4321*");
+
+        privacyPolicy.click();
+
     }
 }
