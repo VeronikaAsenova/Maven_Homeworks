@@ -266,8 +266,9 @@ public class SeleniumTestHomework {
 //
 //        //have a question here -> can't select the exact xpath of the checkbox
 ////        WebElement privacyPolicy = driver.findElement(By.xpath("(//div[@class='consent'])[2]"));
-//        WebElement privacyPolicy = driver.findElement(By.xpath("//label[@for='order_and_delivery']"));
-////
+//        By checkbox = By.xpath("//div[@id='invoice-wrapper']/input");
+//        WebElement privacyPolicy = driver.findElements(checkbox).get(0);
+//
 //        firstName.clear();
 //        firstName.sendKeys("Test1");
 //
@@ -282,8 +283,6 @@ public class SeleniumTestHomework {
 //
 //        confPassword.clear();
 //        confPassword.sendKeys("TestCase4321*");
-//
-//        privacyPolicy.click();
 //
 //    }
 }
