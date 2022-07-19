@@ -178,14 +178,14 @@ public class InternetExamples_Homework {
 
         String option1 = "Option 1";
         String option2 = "Option 2";
+        WebElement opt2 = driver.findElement(By.xpath("//option[@value='2']"));
 
         By dropDown = By.xpath("//select[@id='dropdown']");
 
         Select optionDropDown = new Select(driver.findElement(dropDown));
         optionDropDown.selectByVisibleText(option2);
 
-        //not sure how to Assert here when there is no redirection
-        Assert.assertEquals(optionDropDown, optionDropDown.getFirstSelectedOption().getAttribute(option2));
+        Assert.assertTrue(opt2.isDisplayed());
     }
 
     @Test
